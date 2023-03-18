@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  apache-php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: apache-php
+    tty: true
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - ./html:/var/www/html
+volumes:
+  apache-php:
+    driver: local

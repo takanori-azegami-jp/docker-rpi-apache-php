@@ -1,0 +1,15 @@
+name: docker-rpi-apache-php
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build Docker image
+      run: docker build -t my-docker-image .
+      working-directory: ./docker-rpi-apache-php
+    - name: Run PHP version test
+      run: docker run my-docker-image php -v
